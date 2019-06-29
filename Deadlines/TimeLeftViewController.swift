@@ -10,6 +10,9 @@ import UIKit
 
 class TimeLeftViewController: UIViewController {
 
+    @IBOutlet weak var horizontalScrollView: UIScrollView!
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,7 +30,7 @@ class TimeLeftViewController: UIViewController {
         var dateComponents = DateComponents()
         dateComponents.year = 2019
         dateComponents.month = 7
-        dateComponents.day = 5
+        dateComponents.day = 6
         guard let date = calendar.date(from: dateComponents) else { return  }
         
         let makeAProject = Deadline(name: "Make a project", date: date)
@@ -60,24 +63,28 @@ class TimeLeftViewController: UIViewController {
         }
         
         //setupView(stackView: createTwoCellsStackView(weekday: "Mon", dayWithMonth: "30 June"))
-        createHorisontalStackViewWithDates(calendar: calendar, theLastDate: date)
+        let horizontalStackView = createHorisontalStackViewWithDates(calendar: calendar, theLastDate: date)
+        setupStackView(stackView: horizontalStackView)
 
 
         
     }
     func createTwoCellsStackView(weekday: String, dayWithMonth: String) -> UIStackView {
         let lbl1 = UILabel(frame: CGRect(x: 0, y: 0, width: 70, height: 25))
-        let lbl2 = UILabel(frame: CGRect(x: 0, y: 25, width: 70, height: 25))
+        let lbl2 = UILabel(frame: CGRect(x: 0, y: 15, width: 70, height: 25))
         lbl1.text = weekday
         lbl2.text = dayWithMonth
         
         let stackView: UIStackView = {
             let sv = UIStackView(arrangedSubviews: [lbl1, lbl2])
-            sv.translatesAutoresizingMaskIntoConstraints = false
+            //sv.translatesAutoresizingMaskIntoConstraints = false
             sv.axis = .vertical
+            sv.spacing = 1
             sv.distribution = .fillEqually
+//            sv.heightAnchor.constraint(equalTo: horizontalScrollView.heightAnchor - tableView.heightAnchor, multiplier: 1.0)
             return sv
         }()
+        stackView.bounds = CGRect(x: 0, y: 0, width: 70, height: 50)
         return stackView
     }
     
@@ -132,9 +139,20 @@ class TimeLeftViewController: UIViewController {
     }
     
     fileprivate func setupStackView(stackView: UIStackView){
-        view.addSubview(stackView)
+        
+        horizontalScrollView.addSubview(stackView)
+        
+        let pinLeftStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.left, relatedBy: NSLayoutConstraint.Relation.equal, toItem: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.left, multiplier: 1.0, constant: 0.0)
+        
+        let pinRightStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.right, relatedBy: NSLayoutConstraint.Relation.equal, toItem: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.right, multiplier: 1.0, constant: 0.0)
+        
+        let pinTopStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: 0.0)
+        
+        let pinBottomStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: tableView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1.0, constant: 0.0)
+        
+        horizontalScrollView.addConstraints([pinLeftStackView, pinRightStackView, pinTopStackView, pinBottomStackView])
+        
 
-        NSLayoutConstraint.activate(<#[NSLayoutConstraint]#>)
 
     }
     
