@@ -12,6 +12,10 @@
 		5D09912B22C021C000C00D3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D09912922C021C000C00D3E /* Main.storyboard */; };
 		5D09912D22C021C200C00D3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D09912C22C021C200C00D3E /* Assets.xcassets */; };
 		5D09913022C021C200C00D3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D09912E22C021C200C00D3E /* LaunchScreen.storyboard */; };
+		5D09913B22C1603300C00D3E /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D09913922C1603300C00D3E /* CustomTableViewCell.swift */; };
+		5D09913C22C1603300C00D3E /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D09913A22C1603300C00D3E /* CustomTableViewCell.xib */; };
+		5D09914022C78A1100C00D3E /* TimeLeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D09913F22C78A1100C00D3E /* TimeLeftViewController.swift */; };
+		5D09914422C78E5200C00D3E /* Deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D09914322C78E5200C00D3E /* Deadline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		5D09912C22C021C200C00D3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D09912F22C021C200C00D3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D09913122C021C200C00D3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D09913922C1603300C00D3E /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = ../CustomTableViewCell.swift; sourceTree = "<group>"; };
+		5D09913A22C1603300C00D3E /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CustomTableViewCell.xib; path = ../CustomTableViewCell.xib; sourceTree = "<group>"; };
+		5D09913F22C78A1100C00D3E /* TimeLeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLeftViewController.swift; sourceTree = "<group>"; };
+		5D09914322C78E5200C00D3E /* Deadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Deadline.swift; path = ../Deadline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +64,11 @@
 			children = (
 				5D09912522C021BF00C00D3E /* AppDelegate.swift */,
 				5D09912722C021BF00C00D3E /* ViewController.swift */,
+				5D09914322C78E5200C00D3E /* Deadline.swift */,
+				5D09913F22C78A1100C00D3E /* TimeLeftViewController.swift */,
 				5D09912922C021C000C00D3E /* Main.storyboard */,
+				5D09913922C1603300C00D3E /* CustomTableViewCell.swift */,
+				5D09913A22C1603300C00D3E /* CustomTableViewCell.xib */,
 				5D09912C22C021C200C00D3E /* Assets.xcassets */,
 				5D09912E22C021C200C00D3E /* LaunchScreen.storyboard */,
 				5D09913122C021C200C00D3E /* Info.plist */,
@@ -124,6 +136,7 @@
 			files = (
 				5D09913022C021C200C00D3E /* LaunchScreen.storyboard in Resources */,
 				5D09912D22C021C200C00D3E /* Assets.xcassets in Resources */,
+				5D09913C22C1603300C00D3E /* CustomTableViewCell.xib in Resources */,
 				5D09912B22C021C000C00D3E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,7 +148,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D09914022C78A1100C00D3E /* TimeLeftViewController.swift in Sources */,
+				5D09913B22C1603300C00D3E /* CustomTableViewCell.swift in Sources */,
 				5D09912822C021BF00C00D3E /* ViewController.swift in Sources */,
+				5D09914422C78E5200C00D3E /* Deadline.swift in Sources */,
 				5D09912622C021BF00C00D3E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
