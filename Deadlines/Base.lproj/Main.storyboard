@@ -71,32 +71,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFV-ZG-tHP">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bFV-ZG-tHP">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LjX-LX-URg">
-                                        <rect key="frame" x="0.0" y="50" width="320" height="405"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PXk-sk-ZA3">
+                                        <rect key="frame" x="0.0" y="68" width="320" height="387"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="405" id="Skx-Lj-lXR"/>
-                                        </constraints>
                                     </tableView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="LjX-LX-URg" secondAttribute="bottom" id="ATR-Q1-UNE"/>
-                                    <constraint firstItem="LjX-LX-URg" firstAttribute="leading" secondItem="bFV-ZG-tHP" secondAttribute="leading" id="CgD-Kt-jSV"/>
-                                    <constraint firstItem="LjX-LX-URg" firstAttribute="width" secondItem="bFV-ZG-tHP" secondAttribute="width" id="EnO-ui-kOP"/>
-                                    <constraint firstAttribute="trailing" secondItem="LjX-LX-URg" secondAttribute="trailing" id="Pnk-jG-h7c"/>
-                                    <constraint firstItem="LjX-LX-URg" firstAttribute="top" secondItem="bFV-ZG-tHP" secondAttribute="top" constant="50" id="daZ-al-Ef7"/>
+                                    <constraint firstAttribute="bottom" secondItem="PXk-sk-ZA3" secondAttribute="bottom" id="1u9-Eo-yQX"/>
+                                    <constraint firstItem="PXk-sk-ZA3" firstAttribute="top" secondItem="bFV-ZG-tHP" secondAttribute="top" multiplier="1.18" constant="68" id="Wpc-PK-9X9"/>
+                                    <constraint firstItem="PXk-sk-ZA3" firstAttribute="leading" secondItem="bFV-ZG-tHP" secondAttribute="leading" id="iXo-sc-CNx"/>
+                                    <constraint firstItem="PXk-sk-ZA3" firstAttribute="centerX" secondItem="bFV-ZG-tHP" secondAttribute="centerX" id="mqm-L6-6jB"/>
+                                    <constraint firstAttribute="trailing" secondItem="PXk-sk-ZA3" secondAttribute="trailing" id="nel-Ry-Yfu"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bFV-ZG-tHP" firstAttribute="width" secondItem="L1r-3H-9UO" secondAttribute="width" id="XAA-NG-Tf1"/>
+                            <constraint firstItem="bFV-ZG-tHP" firstAttribute="centerX" secondItem="5zA-d0-1LC" secondAttribute="centerX" id="8Tn-hG-kGh"/>
+                            <constraint firstItem="bFV-ZG-tHP" firstAttribute="top" secondItem="5zA-d0-1LC" secondAttribute="top" id="KUf-qA-O0i"/>
+                            <constraint firstItem="bFV-ZG-tHP" firstAttribute="leading" secondItem="L1r-3H-9UO" secondAttribute="leading" id="P6u-7e-KBI"/>
+                            <constraint firstItem="PXk-sk-ZA3" firstAttribute="height" secondItem="5zA-d0-1LC" secondAttribute="height" constant="-68" id="THB-6h-LJx"/>
                             <constraint firstItem="bFV-ZG-tHP" firstAttribute="bottom" secondItem="5zA-d0-1LC" secondAttribute="bottom" id="cRh-pI-8Ha"/>
-                            <constraint firstItem="bFV-ZG-tHP" firstAttribute="top" secondItem="5zA-d0-1LC" secondAttribute="top" id="q1X-In-z6m"/>
-                            <constraint firstItem="bFV-ZG-tHP" firstAttribute="leading" secondItem="L1r-3H-9UO" secondAttribute="leading" id="wgr-eN-IJV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5zA-d0-1LC"/>
                     </view>
@@ -110,12 +108,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="horizontalScrollView" destination="bFV-ZG-tHP" id="1Ln-AZ-Ggb"/>
-                        <outlet property="tableView" destination="LjX-LX-URg" id="CdL-lm-e7w"/>
+                        <outlet property="tableView" destination="PXk-sk-ZA3" id="wU4-3p-TiS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gru-wX-s5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="860.625" y="1355.2816901408451"/>
+            <point key="canvasLocation" x="858.75" y="1354.2253521126761"/>
         </scene>
         <!--Settings-->
         <scene sceneID="ZNG-Bg-7st">
