@@ -31,6 +31,9 @@
                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
                                 <inset key="imageEdgeInsets" minX="13" minY="23" maxX="13" maxY="23"/>
                                 <state key="normal" image="circle_filled-1"/>
+                                <connections>
+                                    <action selector="didPressCheckMarkButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="XTO-wa-Ncw"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="cSX-PS-oWR">
                                 <rect key="frame" x="50" y="10.5" width="255" height="75"/>
@@ -86,6 +89,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="checkMarkButton" destination="zQV-BB-IC9" id="bo3-38-KlY"/>
                 <outlet property="nameLabel" destination="kIm-6A-Rwp" id="zaO-fd-cXn"/>
                 <outlet property="proposedTimeLabel" destination="auU-K7-xuX" id="ENv-Qr-5Xe"/>
                 <outlet property="showDeadlineLabel" destination="Hu1-1P-obt" id="a7I-SL-a4p"/>

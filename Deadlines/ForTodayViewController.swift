@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ForTodayViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private let numberOfRows = 3
-    private let data = ["Fitst task", "Second task", "Third task"]
+    public let data = ["Fitst task", "Second task", "Third task"]
 
     @IBOutlet weak var tableView: UITableView!
     
