@@ -8,11 +8,16 @@
 
 import UIKit
 
-class TimeLeftViewController: UIViewController {
-
+class TimeLeftViewController: UIViewController, UITableViewDataSource {
+    
     @IBOutlet weak var horizontalScrollView: UIScrollView!
     //@IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewWidth: NSLayoutConstraint!
+    
+    let arrayOfNames = ["Fitst task", "Second task", "Third task"]
+    let arrayOfRequiredTimeToComplete = [12, 4, 5]
+    let arrayOfColors: [UIColor] = [.red, .blue, .yellow]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +68,8 @@ class TimeLeftViewController: UIViewController {
 //        }
         
         //setupView(stackView: createTwoCellsStackView(weekday: "Mon", dayWithMonth: "30 June"))
+        
+        tableView.dataSource = self
         
         let horizontalStackView = createHorisontalStackViewWithDates(calendar: calendar, theLastDate: date)
         setupStackView(stackView: horizontalStackView)
@@ -163,6 +170,13 @@ class TimeLeftViewController: UIViewController {
 //        let wighthScrollView = NSLayoutConstraint(item: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: stackView, attribute: NSLayoutConstraint.Attribute.width, multiplier: 0.1, constant: 0.0)
 //
 //        self.view.addConstraints([wighthScrollView])
+        
+        print(horizontalScrollView.frame.width)
+        print(stackView.frame.width)
+        //tableViewWidth.constant = horizontalScrollView.frame.width
+        tableViewWidth.constant = stackView.frame.width
+        print(horizontalScrollView.frame.width)
+        print(stackView.frame.width)
 
 
     }
@@ -173,6 +187,20 @@ class TimeLeftViewController: UIViewController {
         return nextDayDate
     }
     
+    //========TABLE VIEW==========
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayOfNames.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        
+        cell.backgroundColor = arrayOfColors[indexPath.row]
+        cell.textLabel?.text = arrayOfNames[indexPath.row]
+        //cell.subtit = "\(arrayOfRequiredTimeToComplete[indexPath.row])"
+        return cell
+    }
 
     /*
     // MARK: - Navigation
