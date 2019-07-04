@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="timeLeftCell" id="KGk-i7-Jjw" customClass="TimeLeftTableViewCell" customModule="Deadlines" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OO3-X8-vNm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7WS-vf-FUR">
+                                <rect key="frame" x="20" y="0.0" width="320" height="43.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.71360847008228667" green="0.61293393588967227" blue="0.81255948604060912" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7WS-vf-FUR" firstAttribute="centerY" secondItem="OO3-X8-vNm" secondAttribute="centerY" id="7ZY-7i-Xnn"/>
+                            <constraint firstItem="7WS-vf-FUR" firstAttribute="leading" secondItem="OO3-X8-vNm" secondAttribute="leading" constant="20" id="Iac-36-vGJ"/>
+                            <constraint firstItem="7WS-vf-FUR" firstAttribute="top" secondItem="OO3-X8-vNm" secondAttribute="top" id="ggj-Eq-Xqe"/>
+                            <constraint firstAttribute="bottom" secondItem="7WS-vf-FUR" secondAttribute="bottom" id="iIy-cC-8iC"/>
+                            <constraint firstAttribute="width" constant="320" id="lyz-IM-S9T"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="OO3-X8-vNm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Aeb-b8-aTU"/>
+                    <constraint firstItem="OO3-X8-vNm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LE5-CU-bNT"/>
+                    <constraint firstAttribute="bottom" secondItem="OO3-X8-vNm" secondAttribute="bottom" id="zcY-vG-IGk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="7WS-vf-FUR" firstAttribute="width" secondItem="njF-e1-oar" secondAttribute="width" id="2sE-vJ-Sc3"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="colorView" destination="OO3-X8-vNm" id="bj5-np-Mlz"/>
+                <outlet property="nameLabel" destination="7WS-vf-FUR" id="pbx-eh-2Wm"/>
+                <outlet property="viewWidth" destination="lyz-IM-S9T" id="lXt-us-EPe"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

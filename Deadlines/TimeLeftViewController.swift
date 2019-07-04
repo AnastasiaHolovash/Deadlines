@@ -8,16 +8,17 @@
 
 import UIKit
 
-class TimeLeftViewController: UIViewController, UITableViewDataSource {
+class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     @IBOutlet weak var horizontalScrollView: UIScrollView!
     //@IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewWidth: NSLayoutConstraint!
     
-    let arrayOfNames = ["Fitst task", "Second task", "Third task"]
-    let arrayOfRequiredTimeToComplete = [12, 4, 5]
-    let arrayOfColors: [UIColor] = [.red, .blue, .yellow]
+    //Data
+    let arrayOfNames = ["Fitst task", "Second task", "Third task", "Fitst task", "Second task", "Third task", "Fitst task", "Second task", "Third task", "Fitst task", "Second task", "Third task"]
+    let arrayOfRequiredTimeToComplete = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    let arrayOfColors: [UIColor] = [.red, .blue, .yellow, .red, .blue, .yellow, .red, .blue, .yellow, .red, .blue, .yellow]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +36,10 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource {
         var dateComponents = DateComponents()
         dateComponents.year = 2019
         dateComponents.month = 7
-        dateComponents.day = 15
+        dateComponents.day = 20
         guard let date = calendar.date(from: dateComponents) else { return  }
         
-        let makeAProject = Deadline(name: "Make a project", date: date)
+        //let makeAProject = Deadline(name: "Make a project", date: date)
         
 //        // weekDay
 //        let weekdayDateFormatter = DateFormatter()
@@ -69,10 +70,16 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource {
         
         //setupView(stackView: createTwoCellsStackView(weekday: "Mon", dayWithMonth: "30 June"))
         
+        //TableView
         tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UINib(nibName: "TimeLeftTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "timeLeftCell")
         
         let horizontalStackView = createHorisontalStackViewWithDates(calendar: calendar, theLastDate: date)
         setupStackView(stackView: horizontalStackView)
+        
+        
+        
 
 
         
@@ -80,17 +87,19 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource {
     
     func createTwoCellsStackView(weekday: String, dayWithMonth: String) -> UIStackView {
         
-        let lbl1 = UILabel(frame: CGRect(x: 0, y: 0, width: 70, height: 25))
-        let lbl2 = UILabel(frame: CGRect(x: 0, y: 25, width: 70, height: 25))
+        let lbl1 = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
+        let lbl2 = UILabel(frame: CGRect(x: 0, y: 35, width: 100, height: 35))
         lbl1.text = weekday
+        lbl1.textAlignment = .center
         lbl2.text = dayWithMonth
+        lbl2.textAlignment = .center
         
         let stackView: UIStackView = {
             let sv = UIStackView(arrangedSubviews: [lbl1, lbl2])
             //sv.translatesAutoresizingMaskIntoConstraints = false
             sv.axis = .vertical
-            sv.bounds = CGRect(x: 0, y: 0, width: 70, height: 50)
-            sv.spacing = 1
+            //sv.bounds = CGRect(x: 0, y: 0, width: 70, height: 80)                   //Change nothing
+            sv.spacing = 10
             sv.distribution = .fillEqually
 //            sv.heightAnchor.constraint(equalTo: horizontalScrollView.heightAnchor - tableView.heightAnchor, multiplier: 1.0)
             return sv
@@ -113,11 +122,11 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource {
         var arrayOfDaysWithMonths: [String] = []    //only for printing
         var arrayOfTwoCellsStackView: [UIStackView] = []
         
-        // weekDay
+        // weekDay formating
         let weekdayDateFormatter = DateFormatter()
         weekdayDateFormatter.dateFormat = "EEE"
         
-        // day + month
+        // day + month formating
         let monthDateFormater =  DateFormatter()
         monthDateFormater.dateFormat = "d MMM"
         
@@ -131,7 +140,13 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource {
             
             currentDay = nextDay(calendar: calendar, currentDate: currentDay)
             
+        }
+        if calendar.dateComponents([.year, .month, .day], from: currentDay) == calendar.dateComponents([.year, .month, .day], from: theLastDate){
+            arrayOfWeekdays.append(weekdayDateFormatter.string(from: currentDay))    //only for printing
+            arrayOfDaysWithMonths.append(monthDateFormater.string(from: currentDay)) //only for printing
             
+            let newStackView = createTwoCellsStackView(weekday: weekdayDateFormatter.string(from: currentDay), dayWithMonth: monthDateFormater.string(from: currentDay))
+            arrayOfTwoCellsStackView.append(newStackView)
         }
         
         let stackView: UIStackView = {
@@ -139,14 +154,14 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource {
             sv.translatesAutoresizingMaskIntoConstraints = false
             sv.axis = .horizontal
             sv.spacing = 10
-            sv.bounds = CGRect(x: 0, y: 0, width: arrayOfTwoCellsStackView.count * 80, height: 50)
+            //sv.bounds = CGRect(x: 0, y: 0, width: arrayOfTwoCellsStackView.count * 50, height: 80) //Change nothing
             sv.distribution = .fillEqually
             return sv
         }()
         
         print(arrayOfWeekdays)
         print(arrayOfDaysWithMonths)
-        
+        print("arrayOfTwoCellsStackView.count = \(arrayOfTwoCellsStackView.count)")
         return stackView
         
     }
@@ -159,24 +174,24 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource {
         
 //        let pinRightStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.right, relatedBy: NSLayoutConstraint.Relation.equal, toItem: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.right, multiplier: 1.0, constant: 0.0)
         
-        let pinTopStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: 0.0)
+        let pinTopStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: 10.0)
         
 //        let pinBottomStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: tableView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: 0.0)
         
-        let heightStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.height, multiplier: 0.15, constant: 0.0)
+//        let heightStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.height, multiplier: 0.15, constant: 0.0)
         
-        horizontalScrollView.addConstraints([pinTopStackView, heightStackView])
+        horizontalScrollView.addConstraints([pinTopStackView])
         
 //        let wighthScrollView = NSLayoutConstraint(item: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: stackView, attribute: NSLayoutConstraint.Attribute.width, multiplier: 0.1, constant: 0.0)
 //
 //        self.view.addConstraints([wighthScrollView])
         
-        print(horizontalScrollView.frame.width)
-        print(stackView.frame.width)
+        print("horizontalScrollView.frame.width = " + "\(horizontalScrollView.frame.width)")
+        print("stackView.frame.width =  \(stackView.frame.width)")
         //tableViewWidth.constant = horizontalScrollView.frame.width
-        tableViewWidth.constant = stackView.frame.width
-        print(horizontalScrollView.frame.width)
-        print(stackView.frame.width)
+        //tableViewWidth.constant = stackView.frame.width
+        print("horizontalScrollView.frame.width = " + "\(horizontalScrollView.frame.width)")
+        print("stackView.frame.width =  \(stackView.frame.width)")
 
 
     }
@@ -194,12 +209,22 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         
-        cell.backgroundColor = arrayOfColors[indexPath.row]
-        cell.textLabel?.text = arrayOfNames[indexPath.row]
+//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+//
+//        cell.backgroundColor = arrayOfColors[indexPath.row]
+//        cell.textLabel?.text = arrayOfNames[indexPath.row]
         //cell.subtit = "\(arrayOfRequiredTimeToComplete[indexPath.row])"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "timeLeftCell", for: indexPath) as? TimeLeftTableViewCell
+            else {return UITableViewCell()}
+        cell.nameLabel.text = arrayOfNames[indexPath.row]
+        cell.colorView.backgroundColor = arrayOfColors[indexPath.row]
+        cell.viewWidth.constant = CGFloat(arrayOfRequiredTimeToComplete[indexPath.row] * 56)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
     }
 
     /*
