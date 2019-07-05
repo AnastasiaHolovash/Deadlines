@@ -310,7 +310,7 @@
         <!--Settings-->
         <scene sceneID="qxM-Wf-qNc">
             <objects>
-                <tableViewController id="cZ0-RS-e4m" sceneMemberID="viewController">
+                <tableViewController id="cZ0-RS-e4m" customClass="SettingsTableViewController" customModule="Deadlines" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uLH-ly-n4M">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -470,13 +470,43 @@
                                             <constraint firstItem="cyx-lz-beM" firstAttribute="centerX" secondItem="Pyg-Uk-ZmA" secondAttribute="centerX" id="wkE-RR-wKV"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="95" id="eLv-TH-fgy">
-                                        <rect key="frame" x="0.0" y="396" width="320" height="95"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="54" id="eLv-TH-fgy">
+                                        <rect key="frame" x="0.0" y="396" width="320" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eLv-TH-fgy" id="jVp-ei-atL">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="94.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="53.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lwa-2D-7EJ">
+                                                    <rect key="frame" x="16" y="16" width="243" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="243" id="gDp-Yz-OjQ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zE9-dQ-y89">
+                                                    <rect key="frame" x="267" y="11" width="30" height="31"/>
+                                                    <state key="normal" title="Exit"/>
+                                                    <connections>
+                                                        <action selector="didPressExit:" destination="cZ0-RS-e4m" eventType="touchUpInside" id="yLu-uX-dsg"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="Lwa-2D-7EJ" firstAttribute="top" secondItem="jVp-ei-atL" secondAttribute="topMargin" constant="5" id="4dP-GT-BtN"/>
+                                                <constraint firstItem="Lwa-2D-7EJ" firstAttribute="leading" secondItem="jVp-ei-atL" secondAttribute="leadingMargin" id="M2G-XF-D8c"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="zE9-dQ-y89" secondAttribute="trailing" constant="7" id="Oey-5I-NRc"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Lwa-2D-7EJ" secondAttribute="bottom" constant="6" id="Vme-ys-hEK"/>
+                                                <constraint firstItem="Lwa-2D-7EJ" firstAttribute="top" secondItem="jVp-ei-atL" secondAttribute="topMargin" constant="5" id="et8-3X-Qev"/>
+                                                <constraint firstItem="Lwa-2D-7EJ" firstAttribute="leading" secondItem="jVp-ei-atL" secondAttribute="leadingMargin" id="hgI-5G-HHp"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Lwa-2D-7EJ" secondAttribute="bottom" constant="6" id="s9R-Kx-KBO"/>
+                                                <constraint firstItem="zE9-dQ-y89" firstAttribute="top" secondItem="jVp-ei-atL" secondAttribute="topMargin" id="to5-iu-syB"/>
+                                                <constraint firstItem="zE9-dQ-y89" firstAttribute="centerY" secondItem="Lwa-2D-7EJ" secondAttribute="centerY" id="zOV-Eh-rcu"/>
+                                                <constraint firstItem="zE9-dQ-y89" firstAttribute="leading" secondItem="Lwa-2D-7EJ" secondAttribute="trailing" constant="8" id="zOY-9G-o5V"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -488,6 +518,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settings" id="EVz-rJ-YqH"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="Lwa-2D-7EJ" id="DsX-Rf-w0Z"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wE5-Ic-T00" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>264843754371-rvit025ul5elbcoj6ska5kbglnsob259.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.264843754371-rvit025ul5elbcoj6ska5kbglnsob259</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC-PwHdeeucCigc9bzWCDborV5LrnW3Dp4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>264843754371</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Holovash.Deadlines</string>
+	<key>PROJECT_ID</key>
+	<string>deadlinesios</string>
+	<key>STORAGE_BUCKET</key>
+	<string>deadlinesios.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:264843754371:ios:7eaba16f163bb7be</string>
+	<key>DATABASE_URL</key>
+	<string>https://deadlinesios.firebaseio.com</string>
+</dict>
+</plist>

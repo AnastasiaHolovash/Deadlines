@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46D2F79821A94AB82AD93D44 /* Pods_Deadlines.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C35BF1E2C9754F0350A3BC /* Pods_Deadlines.framework */; };
 		5D09912622C021BF00C00D3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D09912522C021BF00C00D3E /* AppDelegate.swift */; };
 		5D09912822C021BF00C00D3E /* ForTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D09912722C021BF00C00D3E /* ForTodayViewController.swift */; };
 		5D09912B22C021C000C00D3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D09912922C021C000C00D3E /* Main.storyboard */; };
@@ -19,9 +20,18 @@
 		5D1C503E22CCD93600A56AD3 /* TimeLeftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C503C22CCD93600A56AD3 /* TimeLeftTableViewCell.swift */; };
 		5D1C503F22CCD93600A56AD3 /* TimeLeftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D1C503D22CCD93600A56AD3 /* TimeLeftTableViewCell.xib */; };
 		5D7B118C22CE3AB300D49D1A /* AddDeadlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B118B22CE3AB300D49D1A /* AddDeadlineViewController.swift */; };
+		D32AD8E722CF7ED000925D1F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D32AD8E622CF7ED000925D1F /* GoogleService-Info.plist */; };
+		D32AD8E922CF81E900925D1F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D32AD8E822CF81E900925D1F /* Login.storyboard */; };
+		D32AD8EB22CF824200925D1F /* LoginFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8EA22CF824200925D1F /* LoginFirstViewController.swift */; };
+		D32AD8ED22CF825000925D1F /* LoginSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8EC22CF825000925D1F /* LoginSecondViewController.swift */; };
+		D32AD8F022CF82F600925D1F /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8EF22CF82F600925D1F /* ViewManager.swift */; };
+		D32AD8F422CF842400925D1F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8F322CF842400925D1F /* Settings.swift */; };
+		D32AD8F622CF881100925D1F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8F522CF881100925D1F /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B0E4FBB766152E1D7F2DCCC /* Pods-Deadlines.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Deadlines.debug.xcconfig"; path = "Target Support Files/Pods-Deadlines/Pods-Deadlines.debug.xcconfig"; sourceTree = "<group>"; };
+		5B2D0FD02E817959B340B3BE /* Pods-Deadlines.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Deadlines.release.xcconfig"; path = "Target Support Files/Pods-Deadlines/Pods-Deadlines.release.xcconfig"; sourceTree = "<group>"; };
 		5D09912222C021BF00C00D3E /* Deadlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deadlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D09912522C021BF00C00D3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D09912722C021BF00C00D3E /* ForTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForTodayViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +46,14 @@
 		5D1C503C22CCD93600A56AD3 /* TimeLeftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLeftTableViewCell.swift; sourceTree = "<group>"; };
 		5D1C503D22CCD93600A56AD3 /* TimeLeftTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLeftTableViewCell.xib; sourceTree = "<group>"; };
 		5D7B118B22CE3AB300D49D1A /* AddDeadlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeadlineViewController.swift; sourceTree = "<group>"; };
+		92C35BF1E2C9754F0350A3BC /* Pods_Deadlines.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Deadlines.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D32AD8E622CF7ED000925D1F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D32AD8E822CF81E900925D1F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		D32AD8EA22CF824200925D1F /* LoginFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFirstViewController.swift; sourceTree = "<group>"; };
+		D32AD8EC22CF825000925D1F /* LoginSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSecondViewController.swift; sourceTree = "<group>"; };
+		D32AD8EF22CF82F600925D1F /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
+		D32AD8F322CF842400925D1F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		D32AD8F522CF881100925D1F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46D2F79821A94AB82AD93D44 /* Pods_Deadlines.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +73,8 @@
 			children = (
 				5D09912422C021BF00C00D3E /* Deadlines */,
 				5D09912322C021BF00C00D3E /* Products */,
+				8E347948DFC969E2A0959412 /* Pods */,
+				CBD414AA79875B5214161C84 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,15 +89,20 @@
 		5D09912422C021BF00C00D3E /* Deadlines */ = {
 			isa = PBXGroup;
 			children = (
+				D32AD8EE22CF825A00925D1F /* login */,
+				D32AD8E622CF7ED000925D1F /* GoogleService-Info.plist */,
+				D32AD8F322CF842400925D1F /* Settings.swift */,
 				5D09912522C021BF00C00D3E /* AppDelegate.swift */,
 				5D6D815722CE872A00028330 /* Controllers */,
 				5D09912922C021C000C00D3E /* Main.storyboard */,
+				D32AD8F522CF881100925D1F /* SettingsTableViewController.swift */,
 				5D09914322C78E5200C00D3E /* Deadline.swift */,
 				5D6D815822CE879600028330 /* ForTodayTableViewCell */,
 				5D6D815922CE87CA00028330 /* TimeLeftTableViewCell */,
 				5D09912C22C021C200C00D3E /* Assets.xcassets */,
 				5D09912E22C021C200C00D3E /* LaunchScreen.storyboard */,
 				5D09913122C021C200C00D3E /* Info.plist */,
+				D32AD8EF22CF82F600925D1F /* ViewManager.swift */,
 			);
 			path = Deadlines;
 			sourceTree = "<group>";
@@ -109,6 +135,33 @@
 			path = TimeLeftTableViewCell;
 			sourceTree = "<group>";
 		};
+		8E347948DFC969E2A0959412 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2B0E4FBB766152E1D7F2DCCC /* Pods-Deadlines.debug.xcconfig */,
+				5B2D0FD02E817959B340B3BE /* Pods-Deadlines.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CBD414AA79875B5214161C84 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				92C35BF1E2C9754F0350A3BC /* Pods_Deadlines.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D32AD8EE22CF825A00925D1F /* login */ = {
+			isa = PBXGroup;
+			children = (
+				D32AD8EA22CF824200925D1F /* LoginFirstViewController.swift */,
+				D32AD8EC22CF825000925D1F /* LoginSecondViewController.swift */,
+				D32AD8E822CF81E900925D1F /* Login.storyboard */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -116,9 +169,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D09913422C021C200C00D3E /* Build configuration list for PBXNativeTarget "Deadlines" */;
 			buildPhases = (
+				A3C9185C5C4E46D8644E30AA /* [CP] Check Pods Manifest.lock */,
 				5D09911E22C021BF00C00D3E /* Sources */,
 				5D09911F22C021BF00C00D3E /* Frameworks */,
 				5D09912022C021BF00C00D3E /* Resources */,
+				2427ADA58F9DF3A473A82860 /* [CP] Embed Pods Frameworks */,
+				B5A09CF95606FFC93D54969C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -169,6 +225,8 @@
 			files = (
 				5D09913022C021C200C00D3E /* LaunchScreen.storyboard in Resources */,
 				5D09912D22C021C200C00D3E /* Assets.xcassets in Resources */,
+				D32AD8E922CF81E900925D1F /* Login.storyboard in Resources */,
+				D32AD8E722CF7ED000925D1F /* GoogleService-Info.plist in Resources */,
 				5D09913C22C1603300C00D3E /* CustomTableViewCell.xib in Resources */,
 				5D1C503F22CCD93600A56AD3 /* TimeLeftTableViewCell.xib in Resources */,
 				5D09912B22C021C000C00D3E /* Main.storyboard in Resources */,
@@ -177,18 +235,82 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2427ADA58F9DF3A473A82860 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Deadlines/Pods-Deadlines-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Deadlines/Pods-Deadlines-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Deadlines/Pods-Deadlines-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3C9185C5C4E46D8644E30AA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Deadlines-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5A09CF95606FFC93D54969C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Deadlines/Pods-Deadlines-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Deadlines/Pods-Deadlines-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Deadlines/Pods-Deadlines-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5D09911E22C021BF00C00D3E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5D09914022C78A1100C00D3E /* TimeLeftViewController.swift in Sources */,
+				D32AD8ED22CF825000925D1F /* LoginSecondViewController.swift in Sources */,
+				D32AD8F022CF82F600925D1F /* ViewManager.swift in Sources */,
+				D32AD8EB22CF824200925D1F /* LoginFirstViewController.swift in Sources */,
 				5D7B118C22CE3AB300D49D1A /* AddDeadlineViewController.swift in Sources */,
 				5D1C503E22CCD93600A56AD3 /* TimeLeftTableViewCell.swift in Sources */,
 				5D09913B22C1603300C00D3E /* CustomTableViewCell.swift in Sources */,
 				5D09912822C021BF00C00D3E /* ForTodayViewController.swift in Sources */,
 				5D09914422C78E5200C00D3E /* Deadline.swift in Sources */,
+				D32AD8F422CF842400925D1F /* Settings.swift in Sources */,
 				5D09912622C021BF00C00D3E /* AppDelegate.swift in Sources */,
+				D32AD8F622CF881100925D1F /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +454,7 @@
 		};
 		5D09913522C021C200C00D3E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B0E4FBB766152E1D7F2DCCC /* Pods-Deadlines.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -350,6 +473,7 @@
 		};
 		5D09913622C021C200C00D3E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B2D0FD02E817959B340B3BE /* Pods-Deadlines.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
