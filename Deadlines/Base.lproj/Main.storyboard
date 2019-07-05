@@ -223,6 +223,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bFV-ZG-tHP" firstAttribute="bottom" secondItem="5zA-d0-1LC" secondAttribute="bottom" id="Jve-M1-kcW"/>
+                            <constraint firstItem="bFV-ZG-tHP" firstAttribute="height" secondItem="5zA-d0-1LC" secondAttribute="height" id="Jvl-L9-9E2"/>
+                            <constraint firstItem="PXk-sk-ZA3" firstAttribute="height" secondItem="5zA-d0-1LC" secondAttribute="height" constant="-68" id="SMJ-pZ-Rv1"/>
                             <constraint firstItem="bFV-ZG-tHP" firstAttribute="trailing" secondItem="5zA-d0-1LC" secondAttribute="trailing" id="eRR-Nd-aUi"/>
                             <constraint firstItem="bFV-ZG-tHP" firstAttribute="top" secondItem="5zA-d0-1LC" secondAttribute="top" id="iKT-7G-jq2"/>
                             <constraint firstItem="bFV-ZG-tHP" firstAttribute="leading" secondItem="5zA-d0-1LC" secondAttribute="leading" id="kIy-dd-f3s"/>

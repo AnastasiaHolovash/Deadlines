@@ -29,8 +29,8 @@
 		5D09912C22C021C200C00D3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D09912F22C021C200C00D3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D09913122C021C200C00D3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D09913922C1603300C00D3E /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = ../CustomTableViewCell.swift; sourceTree = "<group>"; };
-		5D09913A22C1603300C00D3E /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CustomTableViewCell.xib; path = ../CustomTableViewCell.xib; sourceTree = "<group>"; };
+		5D09913922C1603300C00D3E /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		5D09913A22C1603300C00D3E /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		5D09913F22C78A1100C00D3E /* TimeLeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLeftViewController.swift; sourceTree = "<group>"; };
 		5D09914322C78E5200C00D3E /* Deadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Deadline.swift; path = ../Deadline.swift; sourceTree = "<group>"; };
 		5D1C503C22CCD93600A56AD3 /* TimeLeftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLeftTableViewCell.swift; sourceTree = "<group>"; };
@@ -69,20 +69,44 @@
 			isa = PBXGroup;
 			children = (
 				5D09912522C021BF00C00D3E /* AppDelegate.swift */,
-				5D09914322C78E5200C00D3E /* Deadline.swift */,
-				5D09913F22C78A1100C00D3E /* TimeLeftViewController.swift */,
-				5D09912722C021BF00C00D3E /* ForTodayViewController.swift */,
-				5D7B118B22CE3AB300D49D1A /* AddDeadlineViewController.swift */,
+				5D6D815722CE872A00028330 /* Controllers */,
 				5D09912922C021C000C00D3E /* Main.storyboard */,
-				5D1C503C22CCD93600A56AD3 /* TimeLeftTableViewCell.swift */,
-				5D1C503D22CCD93600A56AD3 /* TimeLeftTableViewCell.xib */,
-				5D09913922C1603300C00D3E /* CustomTableViewCell.swift */,
-				5D09913A22C1603300C00D3E /* CustomTableViewCell.xib */,
+				5D09914322C78E5200C00D3E /* Deadline.swift */,
+				5D6D815822CE879600028330 /* ForTodayTableViewCell */,
+				5D6D815922CE87CA00028330 /* TimeLeftTableViewCell */,
 				5D09912C22C021C200C00D3E /* Assets.xcassets */,
 				5D09912E22C021C200C00D3E /* LaunchScreen.storyboard */,
 				5D09913122C021C200C00D3E /* Info.plist */,
 			);
 			path = Deadlines;
+			sourceTree = "<group>";
+		};
+		5D6D815722CE872A00028330 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5D09912722C021BF00C00D3E /* ForTodayViewController.swift */,
+				5D09913F22C78A1100C00D3E /* TimeLeftViewController.swift */,
+				5D7B118B22CE3AB300D49D1A /* AddDeadlineViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5D6D815822CE879600028330 /* ForTodayTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5D09913922C1603300C00D3E /* CustomTableViewCell.swift */,
+				5D09913A22C1603300C00D3E /* CustomTableViewCell.xib */,
+			);
+			path = ForTodayTableViewCell;
+			sourceTree = "<group>";
+		};
+		5D6D815922CE87CA00028330 /* TimeLeftTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5D1C503C22CCD93600A56AD3 /* TimeLeftTableViewCell.swift */,
+				5D1C503D22CCD93600A56AD3 /* TimeLeftTableViewCell.xib */,
+			);
+			path = TimeLeftTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -15,15 +15,15 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="timeLeftCell" id="KGk-i7-Jjw" customClass="TimeLeftTableViewCell" customModule="Deadlines" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OO3-X8-vNm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                        <rect key="frame" x="0.0" y="2.5" width="320" height="40"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7WS-vf-FUR">
-                                <rect key="frame" x="20" y="0.0" width="320" height="43.5"/>
+                                <rect key="frame" x="20" y="0.0" width="320" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -32,6 +32,7 @@
                         <color key="backgroundColor" red="0.71360847008228667" green="0.61293393588967227" blue="0.81255948604060912" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7WS-vf-FUR" firstAttribute="centerY" secondItem="OO3-X8-vNm" secondAttribute="centerY" id="7ZY-7i-Xnn"/>
+                            <constraint firstAttribute="height" constant="40" id="8U5-mO-wU6"/>
                             <constraint firstItem="7WS-vf-FUR" firstAttribute="leading" secondItem="OO3-X8-vNm" secondAttribute="leading" constant="20" id="Iac-36-vGJ"/>
                             <constraint firstItem="7WS-vf-FUR" firstAttribute="top" secondItem="OO3-X8-vNm" secondAttribute="top" id="ggj-Eq-Xqe"/>
                             <constraint firstAttribute="bottom" secondItem="7WS-vf-FUR" secondAttribute="bottom" id="iIy-cC-8iC"/>
@@ -40,9 +41,9 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="OO3-X8-vNm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Aeb-b8-aTU"/>
+                    <constraint firstItem="OO3-X8-vNm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="Aeb-b8-aTU"/>
                     <constraint firstItem="OO3-X8-vNm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LE5-CU-bNT"/>
-                    <constraint firstAttribute="bottom" secondItem="OO3-X8-vNm" secondAttribute="bottom" id="zcY-vG-IGk"/>
+                    <constraint firstAttribute="bottom" secondItem="OO3-X8-vNm" secondAttribute="bottom" constant="2" id="zcY-vG-IGk"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
