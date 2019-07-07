@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Deadline {
+class Data {
     var name = "Deadline"
     var date = Date()
     
