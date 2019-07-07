@@ -69,14 +69,21 @@ class AddDeadlineViewController: UIViewController {
             let uid = Auth.auth().currentUser?.uid
             let ref = Database.database().reference()
             ref.child("\(uid ?? "")/\(name)").setValue(["dateOfDeadline" : dateOfDeadline, "requiredTimeToComplete" : requiredTimeToComplete])
+            showSavedAlert()
+            //show(TimeLeftViewController, sender: Any)
         }else{
-            showAlert()
+            showErrorAlert()
         }
 
     }
     //NEED APDATING======
-    func showAlert() {
+    func showErrorAlert() {
         let alert = UIAlertController(title: "Error", message: "Enter all, please", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    func showSavedAlert() {
+        let alert = UIAlertController(title: "", message: "New deadline is saved", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
