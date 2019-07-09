@@ -10,7 +10,7 @@ import UIKit
 
 class ForTodayViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    private let numberOfRows = 3
+    //private let numberOfRows = 3
     public let data = ["Fitst task", "Second task", "Third task"]
 
     @IBOutlet weak var tableView: UITableView!

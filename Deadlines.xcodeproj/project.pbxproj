@@ -16,6 +16,7 @@
 		5D09913B22C1603300C00D3E /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D09913922C1603300C00D3E /* CustomTableViewCell.swift */; };
 		5D09913C22C1603300C00D3E /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D09913A22C1603300C00D3E /* CustomTableViewCell.xib */; };
 		5D09914022C78A1100C00D3E /* TimeLeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D09913F22C78A1100C00D3E /* TimeLeftViewController.swift */; };
+		5D0B373E22D3C37E00FA4423 /* DeadlineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B373D22D3C37E00FA4423 /* DeadlineManager.swift */; };
 		5D1C503E22CCD93600A56AD3 /* TimeLeftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C503C22CCD93600A56AD3 /* TimeLeftTableViewCell.swift */; };
 		5D1C503F22CCD93600A56AD3 /* TimeLeftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D1C503D22CCD93600A56AD3 /* TimeLeftTableViewCell.xib */; };
 		5D78F9C022D2006500E7B9A4 /* DataFromDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D78F9BF22D2006400E7B9A4 /* DataFromDatabase.swift */; };
@@ -42,6 +43,7 @@
 		5D09913922C1603300C00D3E /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		5D09913A22C1603300C00D3E /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		5D09913F22C78A1100C00D3E /* TimeLeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLeftViewController.swift; sourceTree = "<group>"; };
+		5D0B373D22D3C37E00FA4423 /* DeadlineManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineManager.swift; sourceTree = "<group>"; };
 		5D1C503C22CCD93600A56AD3 /* TimeLeftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLeftTableViewCell.swift; sourceTree = "<group>"; };
 		5D1C503D22CCD93600A56AD3 /* TimeLeftTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLeftTableViewCell.xib; sourceTree = "<group>"; };
 		5D78F9BF22D2006400E7B9A4 /* DataFromDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFromDatabase.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				5D09912522C021BF00C00D3E /* AppDelegate.swift */,
 				5D6D815722CE872A00028330 /* Controllers */,
 				5D09912922C021C000C00D3E /* Main.storyboard */,
+				5D0B373D22D3C37E00FA4423 /* DeadlineManager.swift */,
 				5D78F9BF22D2006400E7B9A4 /* DataFromDatabase.swift */,
 				5D6D815822CE879600028330 /* ForTodayTableViewCell */,
 				5D6D815922CE87CA00028330 /* TimeLeftTableViewCell */,
@@ -300,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D78F9C022D2006500E7B9A4 /* DataFromDatabase.swift in Sources */,
+				5D0B373E22D3C37E00FA4423 /* DeadlineManager.swift in Sources */,
 				5D09914022C78A1100C00D3E /* TimeLeftViewController.swift in Sources */,
 				D32AD8ED22CF825000925D1F /* LoginSecondViewController.swift in Sources */,
 				D32AD8F022CF82F600925D1F /* ViewManager.swift in Sources */,

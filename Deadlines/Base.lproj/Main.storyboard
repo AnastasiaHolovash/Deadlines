@@ -243,6 +243,7 @@
                     <connections>
                         <outlet property="horizontalScrollView" destination="bFV-ZG-tHP" id="1Ln-AZ-Ggb"/>
                         <outlet property="tableView" destination="PXk-sk-ZA3" id="wU4-3p-TiS"/>
+                        <outlet property="tableViewWigth" destination="jOt-7J-vd1" id="lRs-eM-hFL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gru-wX-s5T" userLabel="First Responder" sceneMemberID="firstResponder"/>

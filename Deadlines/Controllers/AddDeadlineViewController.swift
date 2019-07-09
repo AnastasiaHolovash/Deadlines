@@ -69,11 +69,15 @@ class AddDeadlineViewController: UIViewController {
             let uid = Auth.auth().currentUser?.uid
             let ref = Database.database().reference()
             ref.child("\(uid ?? "")/\(name)").setValue(["dateOfDeadline" : dateOfDeadline, "requiredTimeToComplete" : requiredTimeToComplete])
-            showSavedAlert()
+            //showSavedAlert()
+            //navigationController?.popViewController(animated: true)
+            navigationController?.popToRootViewController(animated: true)
+            //navigationController?.popViewController(animated: true)
             //show(TimeLeftViewController, sender: Any)
         }else{
             showErrorAlert()
         }
+        
 
     }
     //NEED APDATING======
@@ -86,6 +90,9 @@ class AddDeadlineViewController: UIViewController {
         let alert = UIAlertController(title: "", message: "New deadline is saved", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
+        
+        navigationController?.popViewController(animated: true)
+        //navigationController?.popToRootViewController(animated: true)
     }
     /*
     // MARK: - Navigation
