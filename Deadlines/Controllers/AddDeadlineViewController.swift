@@ -47,6 +47,7 @@ class AddDeadlineViewController: UIViewController {
 //
 //        }
         //let myNSDate = Date(timeIntervalSince1970: timeInterval)
+        self.hideKeyboard()
 
     }
     func previousDayInt() -> Int {
@@ -104,4 +105,15 @@ class AddDeadlineViewController: UIViewController {
     }
     */
 
+}
+extension UIViewController {
+    func hideKeyboard() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer( target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

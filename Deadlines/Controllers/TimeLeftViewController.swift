@@ -10,29 +10,15 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-struct Deadline {
-    let name: String
-    let date: Date
-    let timeToComplete: TimeInterval
-    let intDayToDeadline: Int
-
-    var daysToDeadline: Int {
-        return (Calendar.current.dateComponents([.day], from: Date(), to: date).day ?? 0) + 2
-    }
-}
 
 class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     @IBOutlet weak var horizontalScrollView: UIScrollView!
-    //@IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewWigth: NSLayoutConstraint!
     
 
-    
-    //Data
-    //let arrayOfNames = ["Fitst task", "Second task", "Third task", "Fitst task", "Second task", "Third task", "Fitst task", "Second task", "Third task", "Fitst task", "Second task", "Third task"]
-    var deadlines: [Deadline] = []
+    var deadlines: [Deadline] = DeadlineManager.shared.deadlines
 //    var arrayOfNames: [String] = []
 //    var arrayDatesOfDeadlines: [Date] = []
 //    var arrayOfRequiredTimeToComplete: [TimeInterval] = []
@@ -49,10 +35,10 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
         //let calendar = Calendar.current
         
         // Curent day
-        let dayDateFormater = DateFormatter()
-        dayDateFormater.dateFormat = "yyyy-MM-dd"
-        let dateNow = dayDateFormater.string(from: Date())
-        print("today : \(dateNow)")
+//        let dayDateFormater = DateFormatter()
+//        dayDateFormater.dateFormat = "yyyy-MM-dd"
+//        let dateNow = dayDateFormater.string(from: Date())
+//        print("today : \(dateNow)")
         
         // Day Of Deadline
 //        var dateComponents = DateComponents()
@@ -69,8 +55,6 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "TimeLeftTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "timeLeftCell")
-        
-        
         
         getData()
 //        let horizontalStackView = createHorisontalStackViewWithDates()
@@ -93,14 +77,11 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
             let sv = UIStackView(arrangedSubviews: [lbl1, lbl2])
             sv.translatesAutoresizingMaskIntoConstraints = false
             sv.axis = .vertical
-            //sv.bounds = CGRect(x: 0, y: 0, width: 70, height: 80)                   //Change nothing
             sv.spacing = 10
             sv.distribution = .fillEqually
-//            sv.heightAnchor.constraint(equalTo: horizontalScrollView.heightAnchor - tableView.heightAnchor, multiplier: 1.0)
             NSLayoutConstraint.activate([sv.widthAnchor.constraint(equalToConstant: 55)])
             return sv
         }()
-
         
         return stackView
     }
@@ -144,11 +125,14 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
             
         }
         if calendar.dateComponents([.year, .month, .day], from: currentDay) == calendar.dateComponents([.year, .month, .day], from: theLastDate){
-            arrayOfWeekdays.append(weekdayDateFormatter.string(from: currentDay))    //only for printing
-            arrayOfDaysWithMonths.append(monthDateFormater.string(from: currentDay)) //only for printing
-            
-            let newStackView = createTwoCellsStackView(weekday: weekdayDateFormatter.string(from: currentDay), dayWithMonth: monthDateFormater.string(from: currentDay))
-            arrayOfTwoCellsStackView.append(newStackView)
+            for _ in 0...4{
+                arrayOfWeekdays.append(weekdayDateFormatter.string(from: currentDay))    //only for printing
+                arrayOfDaysWithMonths.append(monthDateFormater.string(from: currentDay)) //only for printing
+                
+                let newStackView = createTwoCellsStackView(weekday: weekdayDateFormatter.string(from: currentDay), dayWithMonth: monthDateFormater.string(from: currentDay))
+                arrayOfTwoCellsStackView.append(newStackView)
+                currentDay = nextDay(calendar: calendar, currentDate: currentDay)
+            }
         }
         
         let stackView: UIStackView = {
@@ -156,18 +140,11 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
             sv.translatesAutoresizingMaskIntoConstraints = false
             sv.axis = .horizontal
             sv.spacing = 10
-            //sv.bounds = CGRect(x: 0, y: 0, width: arrayOfTwoCellsStackView.count * 50, height: 80) //Change nothing
             sv.distribution = .fillEqually
             return sv
         }()
         let screenWigth = (arrayOfTwoCellsStackView.count - 1) * 65 + 60
         tableViewWigth.constant = CGFloat(screenWigth)
-        //let tV = tableView ?? nil
-        //tVW?.constant = CGFloat(screenWigth)
-        //tableView.widthAnchor.constraint(equalTo: stackView, multiplier: 1.0).active = true
-//NSLayoutConstraint.activate([sv.widthAnchor.constraint(equalToConstant: 55)])
-        
-//        NSLayoutConstraint.activate([tV?.widthAnchor.constraint(equalToConstant: CGFloat(screenWigth)) ?? NSLayoutAnchor])
         
         print("screenWigth: \(screenWigth)")
         print(arrayOfWeekdays)
@@ -181,30 +158,17 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
     fileprivate func setupStackView(stackView: UIStackView){
         
         horizontalScrollView.addSubview(stackView)
-        
-//        let pinLeftStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.left, relatedBy: NSLayoutConstraint.Relation.equal, toItem: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.left, multiplier: 1.0, constant: 0.0)
-        
-//        let pinRightStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.right, relatedBy: NSLayoutConstraint.Relation.equal, toItem: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.right, multiplier: 1.0, constant: 0.0)
-        
+
         let pinTopStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: 10.0)
-        
-//        let pinBottomStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: tableView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: 0.0)
-        
-//        let heightStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.height, multiplier: 0.15, constant: 0.0)
         
         horizontalScrollView.addConstraints([pinTopStackView])
         
-//        let wighthScrollView = NSLayoutConstraint(item: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: stackView, attribute: NSLayoutConstraint.Attribute.width, multiplier: 0.1, constant: 0.0)
-//
-//        self.view.addConstraints([wighthScrollView])
-        
-        print("horizontalScrollView.frame.width = " + "\(horizontalScrollView.frame.width)")
-        print("stackView.frame.width =  \(stackView.frame.width)")
-        //tableViewWidth.constant = horizontalScrollView.frame.width
-        //tableViewWidth.constant = stackView.frame.width
-        print("horizontalScrollView.frame.width = " + "\(horizontalScrollView.frame.width)")
-        print("stackView.frame.width =  \(stackView.frame.width)")
-
+//        print("horizontalScrollView.frame.width = " + "\(horizontalScrollView.frame.width)")
+//        print("stackView.frame.width =  \(stackView.frame.width)")
+//        //tableViewWidth.constant = horizontalScrollView.frame.width
+//        //tableViewWidth.constant = stackView.frame.width
+//        print("horizontalScrollView.frame.width = " + "\(horizontalScrollView.frame.width)")
+//        print("stackView.frame.width =  \(stackView.frame.width)")
 
     }
     
@@ -222,11 +186,6 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-//
-//        cell.backgroundColor = arrayOfColors[indexPath.row]
-//        cell.textLabel?.text = arrayOfNames[indexPath.row]
-        //cell.subtit = "\(arrayOfRequiredTimeToComplete[indexPath.row])"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "timeLeftCell", for: indexPath) as? TimeLeftTableViewCell
             else {return UITableViewCell()}
         cell.nameLabel.text = deadlines[indexPath.row].name
@@ -288,44 +247,18 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
 //            self.arrayOfDurationOfDeadlines = daysToDeadline
 //            self.intDatesOfDeadline = intDatesOfDeadline
             //self.theLastDate = Date(timeIntervalSince1970: TimeInterval(theLargestNumber))
-        DeadlineManager.shared.getDeadlines { [weak self] deadlines in
-            guard let this = self else { return }
-            this.deadlines = deadlines
-            this.tableView.reloadData()
-           this.setupStackView()
-        }
-        
-            
-        
-            //print("self.theLastDate--------------\(self.theLastDate)")
-            print("===================================")
-//            print(self.arrayOfNames)
-//            print(self.arrayDatesOfDeadlines)
-//            print(self.arrayOfRequiredTimeToComplete)
-        //            print(self.arrayOfDurationOfDeadlines)
+//        DeadlineManager.shared.getDeadlines { [weak self] deadlines in
+//            guard let this = self else { return }
+//            this.deadlines = deadlines
+//            this.tableView.reloadData()
+//            this.setupStackView()
+//        }
+        self.tableView.reloadData()
+        self.setupStackView()
     }
     
     private func setupStackView() {
         setupStackView(stackView: createHorisontalStackViewWithDates())
     }
 }
-    
-//    func getNames(data : [String : [String: Int]]) -> [String] {
-//        var names: [String] = []
-//        for oneDeadline in data{
-//            names.append(oneDeadline.key)
-//        }
-//        print("NAMES : \(names)")
-//        return names
-//    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
