@@ -31,6 +31,10 @@ class CustomTableViewCell: UITableViewCell {
         nameLabel.text = nil
         showDeadlineLabel.text = nil
         proposedTimeLabel.text = nil
+        
+//        let image1 = #imageLiteral(resourceName: "circle_filled-1")
+//        checkState = 0
+//        checkMarkButton.setImage(image1, for: .normal)
 
     }
     var checkState = 0

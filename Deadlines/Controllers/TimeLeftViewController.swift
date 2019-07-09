@@ -18,7 +18,7 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var tableViewWigth: NSLayoutConstraint!
     
 
-    var deadlines: [Deadline] = DeadlineManager.shared.deadlines
+    var deadlines: [Deadline] = []
 //    var arrayOfNames: [String] = []
 //    var arrayDatesOfDeadlines: [Date] = []
 //    var arrayOfRequiredTimeToComplete: [TimeInterval] = []
@@ -30,6 +30,7 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        deadlines = DeadlineManager.shared.deadlines
 
         // Do any additional setup after loading the view.
         //let calendar = Calendar.current
@@ -260,5 +261,26 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
     private func setupStackView() {
         setupStackView(stackView: createHorisontalStackViewWithDates())
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Mark: - pushing information about selected client to OneClientViewController
+        guard (storyboard?.instantiateViewController(withIdentifier: "detailViewController") as? DetailViewController) != nil else { return }
+        performSegue(withIdentifier: "showDetailFromTimeLeft", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showDetailFromTimeLeft" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                if let destination = segue.destination as? DetailViewController {
+                    destination.selectedDeadline = DeadlineManager.shared.deadlines[indexPath.row]
+                }
+            }
+        }
+    }
+    
+    
 }
+
 
