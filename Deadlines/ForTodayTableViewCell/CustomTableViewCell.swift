@@ -44,7 +44,7 @@ class CustomTableViewCell: UITableViewCell {
             let image1 = #imageLiteral(resourceName: "circle_filled-1")
             checkState = 0
             checkMarkButton.setImage(image1, for: .normal)
-        }else{
+        } else {
             print(nameLabel.text ?? "NOTHING")
             let image2 = #imageLiteral(resourceName: "checked-2")
             checkState = 1

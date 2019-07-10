@@ -22,34 +22,11 @@ class AddDeadlineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //======================
-        
-//        var dateComponents = DateComponents()
-//        dateComponents.year = 2019
-//        dateComponents.month = 7
-//        dateComponents.day = 20
-//        guard let date = calendar.date(from: dateComponents) else { return  }
-//
-//        let someInt = 5
-        //======================
 
-        //print("DATE = \(date)")
-//        let timeInterval = date.timeIntervalSince1970
-//        let intTimeInterval = Int(timeInterval)
-//
-//        let uid = Auth.auth().currentUser?.uid
-//        let ref = Database.database().reference()
-//        //ref.child("\(uid ?? "")/name").setValue("NewNew")
-//        ref.child("\(uid ?? "")/NewNew").setValue(["dateOfDeadline" : intTimeInterval, "requiredTimeToComplete" : someInt])
-//        ref.child("\(uid ?? "")/NewNew/dateOfDeadline/").observe(.value){
-//            (snapshot) in guard let dateOfDeadline = snapshot.value as? Int else {return}
-//            print("dateOfDeadline : \(dateOfDeadline)")
-//
-//        }
-        //let myNSDate = Date(timeIntervalSince1970: timeInterval)
         self.hideKeyboard()
 
     }
+    
     func previousDayInt() -> Int {
         let currentDate = Date()
         let previousDay = Int(calendar.date(byAdding: .day, value: -1, to: currentDate)?.timeIntervalSince1970 ?? currentDate.timeIntervalSince1970)
@@ -95,15 +72,6 @@ class AddDeadlineViewController: UIViewController {
         navigationController?.popViewController(animated: true)
         //navigationController?.popToRootViewController(animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 extension UIViewController {

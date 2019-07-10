@@ -15,6 +15,11 @@ struct Deadline {
     let intDayToDeadline: Int
     
     var daysToDeadline: Int {
-        return (Calendar.current.dateComponents([.day], from: Date(), to: date).day ?? 0) + 2
+        print(">> \(Calendar.current.dateComponents([.day], from: Date(), to: date).day ?? 0)")
+        if (Calendar.current.dateComponents([.day], from: Date(), to: date).day ?? -1) < 0{
+            return Calendar.current.dateComponents([.day], from: Date(), to: date).day ?? -1
+        }else{
+            return (Calendar.current.dateComponents([.day], from: Date(), to: date).day ?? 0) + 1
+        }
     }
 }

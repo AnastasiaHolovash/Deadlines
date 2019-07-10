@@ -59,31 +59,6 @@ class SettingsTableViewController: UITableViewController {
             print(error.localizedDescription)
         }
     }
-    
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if !isDatePickerNeeded, indexPath.row == 3 {
-//            isDatePickerNeeded = true
-//            let lastItemIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
-//            tableView.insertRows(at: [lastItemIndexPath], with: .automatic)
-//        }
-////        else if isDatePickerNeeded {
-////            isDatePickerNeeded = false
-////            let lastIndexPath = IndexPath(row: cars.count, section: indexPath.section)
-////            tableView.deleteRows(at: [lastIndexPath], with: .automatic)
-////        }
-//    }
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if isDatePickerNeeded, let cell = tableView.dequeueReusableCell(withIdentifier: "datePickerCell") as? DatePickerTableViewCell
-//        {
-//            //cell.delegate = self
-//            return  cell
-//        }
-//        return tableView.
-//    }
-    
-    
-
 
 
 }

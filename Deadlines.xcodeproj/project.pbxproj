@@ -18,8 +18,6 @@
 		5D09914022C78A1100C00D3E /* TimeLeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D09913F22C78A1100C00D3E /* TimeLeftViewController.swift */; };
 		5D0B373E22D3C37E00FA4423 /* DeadlineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B373D22D3C37E00FA4423 /* DeadlineManager.swift */; };
 		5D0B374022D4AE6D00FA4423 /* DeadlineStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B373F22D4AE6D00FA4423 /* DeadlineStruct.swift */; };
-		5D0B374322D4C02C00FA4423 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B374122D4C02C00FA4423 /* DatePickerTableViewCell.swift */; };
-		5D0B374422D4C02C00FA4423 /* DatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D0B374222D4C02C00FA4423 /* DatePickerTableViewCell.xib */; };
 		5D0B374822D512D400FA4423 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B374722D512D400FA4423 /* DetailViewController.swift */; };
 		5D1C503E22CCD93600A56AD3 /* TimeLeftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C503C22CCD93600A56AD3 /* TimeLeftTableViewCell.swift */; };
 		5D1C503F22CCD93600A56AD3 /* TimeLeftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D1C503D22CCD93600A56AD3 /* TimeLeftTableViewCell.xib */; };
@@ -48,8 +46,6 @@
 		5D09913F22C78A1100C00D3E /* TimeLeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLeftViewController.swift; sourceTree = "<group>"; };
 		5D0B373D22D3C37E00FA4423 /* DeadlineManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineManager.swift; sourceTree = "<group>"; };
 		5D0B373F22D4AE6D00FA4423 /* DeadlineStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineStruct.swift; sourceTree = "<group>"; };
-		5D0B374122D4C02C00FA4423 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
-		5D0B374222D4C02C00FA4423 /* DatePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerTableViewCell.xib; sourceTree = "<group>"; };
 		5D0B374722D512D400FA4423 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5D1C503C22CCD93600A56AD3 /* TimeLeftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLeftTableViewCell.swift; sourceTree = "<group>"; };
 		5D1C503D22CCD93600A56AD3 /* TimeLeftTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLeftTableViewCell.xib; sourceTree = "<group>"; };
@@ -102,7 +98,6 @@
 				5D09912922C021C000C00D3E /* Main.storyboard */,
 				5D0B373D22D3C37E00FA4423 /* DeadlineManager.swift */,
 				5D0B373F22D4AE6D00FA4423 /* DeadlineStruct.swift */,
-				5D0B374622D4C08F00FA4423 /* DatePickerTableViewCell */,
 				5D6D815822CE879600028330 /* ForTodayTableViewCell */,
 				5D6D815922CE87CA00028330 /* TimeLeftTableViewCell */,
 				D32AD8EE22CF825A00925D1F /* login */,
@@ -114,15 +109,6 @@
 				D32AD8EF22CF82F600925D1F /* ViewManager.swift */,
 			);
 			path = Deadlines;
-			sourceTree = "<group>";
-		};
-		5D0B374622D4C08F00FA4423 /* DatePickerTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				5D0B374122D4C02C00FA4423 /* DatePickerTableViewCell.swift */,
-				5D0B374222D4C02C00FA4423 /* DatePickerTableViewCell.xib */,
-			);
-			path = DatePickerTableViewCell;
 			sourceTree = "<group>";
 		};
 		5D6D815722CE872A00028330 /* Controllers */ = {
@@ -246,7 +232,6 @@
 				5D09913022C021C200C00D3E /* LaunchScreen.storyboard in Resources */,
 				5D09912D22C021C200C00D3E /* Assets.xcassets in Resources */,
 				D32AD8E922CF81E900925D1F /* Login.storyboard in Resources */,
-				5D0B374422D4C02C00FA4423 /* DatePickerTableViewCell.xib in Resources */,
 				D32AD8E722CF7ED000925D1F /* GoogleService-Info.plist in Resources */,
 				5D09913C22C1603300C00D3E /* CustomTableViewCell.xib in Resources */,
 				5D1C503F22CCD93600A56AD3 /* TimeLeftTableViewCell.xib in Resources */,
@@ -325,7 +310,6 @@
 				D32AD8ED22CF825000925D1F /* LoginSecondViewController.swift in Sources */,
 				D32AD8F022CF82F600925D1F /* ViewManager.swift in Sources */,
 				D32AD8EB22CF824200925D1F /* LoginFirstViewController.swift in Sources */,
-				5D0B374322D4C02C00FA4423 /* DatePickerTableViewCell.swift in Sources */,
 				5D7B118C22CE3AB300D49D1A /* AddDeadlineViewController.swift in Sources */,
 				5D1C503E22CCD93600A56AD3 /* TimeLeftTableViewCell.swift in Sources */,
 				5D09913B22C1603300C00D3E /* CustomTableViewCell.swift in Sources */,
