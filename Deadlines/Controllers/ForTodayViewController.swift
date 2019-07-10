@@ -18,7 +18,6 @@ class ForTodayViewController: UIViewController, UITableViewDataSource, UITableVi
     var selectedDeadlines: [Deadline] = []
     var proponedTime: [Int] = []
     var needAlert = false
-    var checkedOut: [Deadline] = []
     var editedDeadlines: [Deadline] = []
 
     //------------------------------------
@@ -33,18 +32,7 @@ class ForTodayViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "customCell")
         
         updateDeadlines()
-        
-//        selectorDealines()
-//        print("""
-//
-//            *********************************************
-//
-//            deadlines: \(deadlines)
-//            selectedDeadlines:\(selectedDeadlines)
-//            proponedTime: \(proponedTime)
-//            """)
-        
-    
+
     }
     
     
@@ -52,15 +40,22 @@ class ForTodayViewController: UIViewController, UITableViewDataSource, UITableVi
         let uid = Auth.auth().currentUser?.uid
         let ref = Database.database().reference()
         ref.child("\(uid ?? "")/").observe(.childChanged){ deadline in
+            //self.updateDeadlines()
+            self.updateDeadlines()
+
             self.tableView.reloadData()
         }
+        
+        
     }
     
     
     
     func updateDeadlines() {
         DeadlineManager.shared.getDeadlines { [weak self] deadlines in
+            
             guard let this = self else { return }
+            this.deadlines = []
             this.deadlines = deadlines
             
             this.selectorDealines()
@@ -101,13 +96,15 @@ class ForTodayViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? CustomTableViewCell
             else {return UITableViewCell()}
-        
-        cell.nameLabel.text = selectedDeadlines[indexPath.row].name
+        if selectedDeadlines[indexPath.row].daysToDeadline <= 0 {
+            cell.nameLabel.text = "\(selectedDeadlines[indexPath.row].name) was missed"
+            cell.nameLabel.textColor = .red
+        }else{
+            cell.nameLabel.text = selectedDeadlines[indexPath.row].name
+        }
         cell.showDeadlineLabel.text = dateToString(date: selectedDeadlines[indexPath.row].date)
-        cell.proposedTimeLabel.text = timeToCompleteInString(period: selectedDeadlines[indexPath.row].timeToComplete)
+        cell.proposedTimeLabel.text = timeToCompleteInString(min: proponedTime[indexPath.row])
 
-        
-        
         return cell
     }
     
@@ -121,13 +118,10 @@ class ForTodayViewController: UIViewController, UITableViewDataSource, UITableVi
         return dateDateFormater.string(from: date)
     }
     
-    func timeToCompleteInString(period: TimeInterval) -> String {
-        let min = Int(period / 60)
+    func timeToCompleteInString(min: Int) -> String {
         let hours = Int(min / 60)
         return "\(hours) hours \(min - hours * 60) min should spend for this one today"
     }
-
-    
 
     //showDetailFromForToday
     
@@ -152,96 +146,64 @@ class ForTodayViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     func selectorDealines(){
-        //var deadlinesNew = deadlines
-//        var selectedDeadlines: [Deadline] = []
-//        var proponedTime: [Int] = []
-//        var needAlert = false
+
         var timeForWork = 3 * 60
         editedDeadlines = deadlines
         
-        for oneDeadline in deadlines{
+        for oneDeadline in editedDeadlines{
+            if oneDeadline.daysToDeadline < 0{
+                timeForWork -= Int(oneDeadline.timeToComplete / 60)
+                selectedDeadlines.append(oneDeadline)
+                removeDeadline(deadlineToRemove: oneDeadline)
+                proponedTime.append(Int(oneDeadline.timeToComplete / 60))
+            }
+        }
+        
+        for oneDeadline in editedDeadlines{
             if Calendar.current.dateComponents([.year, .month, .day], from: oneDeadline.date) == Calendar.current.dateComponents([.year, .month, .day], from: Date()){
                 timeForWork -= Int(oneDeadline.timeToComplete / 60)
                 selectedDeadlines.append(oneDeadline)
                 removeDeadline(deadlineToRemove: oneDeadline)
-                //checkedOut.append(oneDeadline)
-                //deadlinesNew.remove(at: oneDeadline)
                 proponedTime.append(Int(oneDeadline.timeToComplete / 60))
             }
-            if timeForWork < 0 {
-                needAlert = true
-            } else if timeForWork > 0{
-                
-                // Search the deadline for the next day that has the bigest timeToComplete
-                var tempArray: [Deadline] = []
-                for oneDeadline in deadlines{
-                    if Calendar.current.dateComponents([.year, .month, .day], from: oneDeadline.date) == Calendar.current.dateComponents([.year, .month, .day], from: nextDay(currentDate: Date())){
-                        tempArray.append(oneDeadline)
+        }
+        if timeForWork < 0 {
+            needAlert = true
+        } else if timeForWork > 0{
+            
+            // Search the deadline for the next day that has the bigest timeToComplete
+            var tempArray: [Deadline] = []
+            for oneDeadline in editedDeadlines{
+                if Calendar.current.dateComponents([.year, .month, .day], from: oneDeadline.date) == Calendar.current.dateComponents([.year, .month, .day], from: nextDay(currentDate: Date())){
+                    tempArray.append(oneDeadline)
+                }
+            }
+            
+            if !tempArray.isEmpty {
+                var theBigestForTomorrow = tempArray[0]
+                for oneDeadline in tempArray{
+                    if Int(oneDeadline.timeToComplete) > Int(theBigestForTomorrow.timeToComplete){
+                        theBigestForTomorrow = oneDeadline
                     }
                 }
-                
-                if !tempArray.isEmpty {
-                    var theBigestForTomorrow = tempArray[0]
-                    for oneDeadline in tempArray{
-                        if Int(oneDeadline.timeToComplete) > Int(theBigestForTomorrow.timeToComplete){
-                            theBigestForTomorrow = oneDeadline
-                        }
-                    }
-                    
-                    timeForWork -= howMuchTimeToSpend(timeLeft: timeForWork, oneDeadline: theBigestForTomorrow)
-//                    if timeForWork >= Int(theBigestForTomorrow.timeToComplete / 60){
-//                        timeForWork -= Int(theBigestForTomorrow.timeToComplete / 60)
-//                        proponedTime.append(Int(theBigestForTomorrow.timeToComplete / 60))
-//                    }else{
-//                        timeForWork = 0
-//                        proponedTime.append(timeForWork)
-//                    }
-//                    selectedDeadlines.append(theBigestForTomorrow)
+                timeForWork -= howMuchTimeToSpend(timeLeft: timeForWork, oneDeadline: theBigestForTomorrow)
+            }
+            
+            // Search deadlines that have the bigest timeToComplete
+            while timeForWork > 0{
+                if editedDeadlines.count == 0{
+                    break
                 }
-                
-                // Search deadlines that have the bigest timeToComplete
-                var editedDeadlines = deadlines
-                
-                while timeForWork > 0{
-                    if checkedOut.count == deadlines.count{
-                        break
+
+                var theBigest = editedDeadlines[0]
+                for one in editedDeadlines{
+                    if Int(one.timeToComplete) > Int(theBigest.timeToComplete){
+                        theBigest = one
                     }
-                    var theBigest = deadlines[0]
-                    for one in deadlines{
-                        if Int(one.timeToComplete) > Int(theBigest.timeToComplete){
-                            theBigest = one
-                        }
-                    }
-                    var nameOfDeadlines: [String] = []
-                    editedDeadlines.forEach { (deadline) in
-                        nameOfDeadlines.append(deadline.name)
-                    }
-                    
-                    if nameOfDeadlines.contains(theBigest.name) {
-                        if let idx = nameOfDeadlines.firstIndex(of: theBigest.name) {
-                            editedDeadlines.remove(at: idx)
-                        }
-                    }
-                    print(editedDeadlines)
-                    //editedDeadlines.remove()
-                    
-                    var theSame = false
-                    for oneChecked in checkedOut{
-                        if theBigest.name == oneChecked.name{
-                            theSame = true
-                        }
-                    }
-                    if !theSame{
-                        timeForWork -= howMuchTimeToSpend(timeLeft: timeForWork, oneDeadline: theBigest)
-                    }
-                    checkedOut.append(theBigest)
                 }
-                
-                
+               timeForWork -= howMuchTimeToSpend(timeLeft: timeForWork, oneDeadline: theBigest)
             }
         }
-        
-        //return selectedDeadlines
     }
     
     func nextDay(currentDate: Date) -> Date {
@@ -259,7 +221,8 @@ class ForTodayViewController: UIViewController, UITableViewDataSource, UITableVi
             proponedTime.append(howMuchTimeToSpend)
         }
         selectedDeadlines.append(oneDeadline)
-        checkedOut.append(oneDeadline)
+        //checkedOut.append(oneDeadline)
+        removeDeadline(deadlineToRemove: oneDeadline)
         return howMuchTimeToSpend
     }
     

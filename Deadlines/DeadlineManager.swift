@@ -42,5 +42,32 @@ class DeadlineManager {
             completion?(this.deadlines)
 
         }
+        
+        
+//        let ref2 = Database.database().reference()
+//        ref2.child("\(uid ?? "")/").observe(.childChanged){ [weak self] (snapshot) in
+//            self?.deadlines = []
+//            guard let dataFromDatabase = snapshot.value as? [String : [String: Int]] else {return}
+//            //print("DATA : \(dataFromDatabase)")
+//            //            var names: [String] = []
+//            //            var timeToComplete: [TimeInterval] = []
+//            //            var datesOfDeadline: [Date] = []
+//            //            var daysToDeadline: [Int] = []
+//            //            var intDatesOfDeadline: [Int] = []
+//
+//            dataFromDatabase.forEach { (key, value) in
+//
+//                let deadline = Deadline(name: key,
+//                                        date: Date(timeIntervalSince1970: TimeInterval(value["dateOfDeadline"] ?? 0)),
+//                                        timeToComplete: TimeInterval(value["requiredTimeToComplete"] ?? 0), intDayToDeadline: value["dateOfDeadline"] ?? 0)
+//                tempDeadlines.append(deadline)
+//            }
+//            guard let this = self else { return }
+//            this.deadlines = tempDeadlines
+//            completion?(this.deadlines)
+//
+        }
+        
+        
     }
-}
+

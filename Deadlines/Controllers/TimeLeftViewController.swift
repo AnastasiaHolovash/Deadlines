@@ -26,26 +26,6 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         deadlines = DeadlineManager.shared.deadlines
-
-        // Do any additional setup after loading the view.
-        //let calendar = Calendar.current
-        
-        // Curent day
-//        let dayDateFormater = DateFormatter()
-//        dayDateFormater.dateFormat = "yyyy-MM-dd"
-//        let dateNow = dayDateFormater.string(from: Date())
-//        print("today : \(dateNow)")
-        
-        // Day Of Deadline
-//        var dateComponents = DateComponents()
-//        dateComponents.year = 2019
-//        dateComponents.month = 7
-//        dateComponents.day = 19
-//        guard let date = calendar.date(from: dateComponents) else { return  }
-//
-        //let makeAProject = Deadline(name: "Make a project", date: date)
-//        let diffInDays = Calendar.current.dateComponents([.day], from: Date(), to: date).day
-//        print("diffInDays: \(diffInDays ?? 0)")
         
         //TableView
         tableView.dataSource = self
@@ -53,11 +33,16 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.register(UINib(nibName: "TimeLeftTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "timeLeftCell")
         
         getData()
-//        let horizontalStackView = createHorisontalStackViewWithDates()
-//        setupStackView(stackView: horizontalStackView)
-        //print("self.theLastDate--------------\(theLastDate)")
-  
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let uid = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference()
+        ref.child("\(uid ?? "")/").observe(.childChanged){ deadline in
+            //self.deadlines = DeadlineManager.shared.deadlines
+            self.getData()
+            self.tableView.reloadData()
+        }
     }
     
     func createTwoCellsStackView(weekday: String, dayWithMonth: String) -> UIStackView {
@@ -158,13 +143,6 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
         let pinTopStackView = NSLayoutConstraint(item: stackView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: horizontalScrollView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: 10.0)
         
         horizontalScrollView.addConstraints([pinTopStackView])
-        
-//        print("horizontalScrollView.frame.width = " + "\(horizontalScrollView.frame.width)")
-//        print("stackView.frame.width =  \(stackView.frame.width)")
-//        //tableViewWidth.constant = horizontalScrollView.frame.width
-//        //tableViewWidth.constant = stackView.frame.width
-//        print("horizontalScrollView.frame.width = " + "\(horizontalScrollView.frame.width)")
-//        print("stackView.frame.width =  \(stackView.frame.width)")
 
     }
     
@@ -232,7 +210,6 @@ class TimeLeftViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
     }
-    
     
 }
 
