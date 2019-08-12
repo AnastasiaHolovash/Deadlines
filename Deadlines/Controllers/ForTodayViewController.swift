@@ -146,6 +146,8 @@ class ForTodayViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     func selectorDealines(){
+        selectedDeadlines = []
+        proponedTime = []
 
         var timeForWork = 3 * 60
         editedDeadlines = deadlines

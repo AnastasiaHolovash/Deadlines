@@ -39,6 +39,7 @@ class DeadlineManager {
             }
             guard let this = self else { return }
             this.deadlines = tempDeadlines
+            tempDeadlines = []
             completion?(this.deadlines)
 
         }
