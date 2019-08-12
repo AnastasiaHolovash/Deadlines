@@ -120,7 +120,19 @@ class ForTodayViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func timeToCompleteInString(min: Int) -> String {
         let hours = Int(min / 60)
-        return "\(hours) hours \(min - hours * 60) min should spend for this one today"
+        var text = ""
+        if hours == 1 {
+            text += "\(hours) hour "
+        }else if hours > 0 {
+            text += "\(hours) hours "
+        }
+        
+        if (min - hours * 60) > 0{
+            text += "\(min - hours * 60) min "
+        }
+        text += "should spend for this one today"
+//        return "\(hours) hours \(min - hours * 60) min should spend for this one today"
+        return text
     }
 
     //showDetailFromForToday

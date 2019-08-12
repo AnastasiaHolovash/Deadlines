@@ -11,32 +11,45 @@ import Firebase
 import FirebaseDatabase
 
 class AddDeadlineViewController: UIViewController {
-
+    
     @IBOutlet weak var nameTextField: UITextField!
 //    @IBOutlet weak var deadlineDatePicker: UIDatePicker!
-    @IBOutlet weak var deadlineTaxtField: UITextField!
+    @IBOutlet weak var deadlineTextField: UITextField!
+//    @IBOutlet weak var timeToCompletePicker: UIDatePicker!
+    @IBOutlet weak var timeToCompleteTextField: UITextField!
     
-    @IBOutlet weak var timeToCompletePicker: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
     
     let calendar = Calendar.current
     
     private var datePicker: UIDatePicker?
-    var dateOfDeadline: Date
+    private var timePicker: UIDatePicker?
+    var dateOfDeadline: Date = Date()
+    var timeToCompleteDuration: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.hideKeyboard()
         
+        // datePicker
         datePicker = UIDatePicker()
         datePicker?.datePickerMode = .date
         datePicker?.addTarget(self, action: #selector(AddDeadlineViewController.dateChanged(datePicker:)), for: .valueChanged)
-        deadlineTaxtField.inputView = datePicker
+        deadlineTextField.inputView = datePicker
+        
+        //timePicker
+        timePicker = UIDatePicker()
+        timePicker?.datePickerMode = .countDownTimer
+        timePicker?.minuteInterval = 15
+        timePicker?.addTarget(self, action: #selector(AddDeadlineViewController.timeChanged(timePicker:)), for: .valueChanged)
+        timeToCompleteTextField.inputView = timePicker
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddDeadlineViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
-
+        
+        dateOfDeadline = previousDay() 
+        
     }
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
@@ -46,9 +59,23 @@ class AddDeadlineViewController: UIViewController {
     @objc func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
-        deadlineTaxtField.text = dateFormatter.string(from: datePicker.date)
+        deadlineTextField.text = dateFormatter.string(from: datePicker.date)
         dateOfDeadline = datePicker.date
         view.endEditing(true)
+    }
+    
+    @objc func timeChanged(timePicker: UIDatePicker) {
+        let min = Int(timePicker.countDownDuration / 60)
+        let hours = Int(min / 60)
+        timeToCompleteTextField.text = String("\(hours) hours \(min - hours * 60) min")
+
+        timeToCompleteDuration = timePicker.countDownDuration
+        view.endEditing(true)
+    }
+    
+    func previousDay() -> Date{
+        let currentDate = Date()
+        return calendar.date(byAdding: .day, value: -1, to: currentDate) ?? currentDate
     }
     
     func previousDayInt() -> Int {
@@ -60,7 +87,7 @@ class AddDeadlineViewController: UIViewController {
     @IBAction func saveAction(_ sender: UIButton) {
         guard let name = nameTextField.text else { return }
         let getdateOfDeadline = dateOfDeadline
-        let requiredTimeToCompleteDuration = timeToCompletePicker.countDownDuration
+        let requiredTimeToCompleteDuration = timeToCompleteDuration
         // Date -> Int
         let dateOfDeadlineTimeInterval = getdateOfDeadline.timeIntervalSince1970
         let dateOfDeadline = Int(dateOfDeadlineTimeInterval)
@@ -79,7 +106,7 @@ class AddDeadlineViewController: UIViewController {
         }else{
             showErrorAlert()
         }
-
+        
     }
     //NEED APDATING======
     func showErrorAlert() {
@@ -95,7 +122,7 @@ class AddDeadlineViewController: UIViewController {
         navigationController?.popViewController(animated: true)
         //navigationController?.popToRootViewController(animated: true)
     }
-
+    
 }
 extension UIViewController {
     func hideKeyboard() {
