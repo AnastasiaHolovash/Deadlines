@@ -13,18 +13,42 @@ import FirebaseDatabase
 class AddDeadlineViewController: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var deadlineDatePicker: UIDatePicker!
+//    @IBOutlet weak var deadlineDatePicker: UIDatePicker!
+    @IBOutlet weak var deadlineTaxtField: UITextField!
+    
     @IBOutlet weak var timeToCompletePicker: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
     
     let calendar = Calendar.current
     
+    private var datePicker: UIDatePicker?
+    var dateOfDeadline: Date
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         self.hideKeyboard()
+        
+        datePicker = UIDatePicker()
+        datePicker?.datePickerMode = .date
+        datePicker?.addTarget(self, action: #selector(AddDeadlineViewController.dateChanged(datePicker:)), for: .valueChanged)
+        deadlineTaxtField.inputView = datePicker
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddDeadlineViewController.viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
 
+    }
+    
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    @objc func dateChanged(datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        deadlineTaxtField.text = dateFormatter.string(from: datePicker.date)
+        dateOfDeadline = datePicker.date
+        view.endEditing(true)
     }
     
     func previousDayInt() -> Int {
@@ -35,7 +59,7 @@ class AddDeadlineViewController: UIViewController {
     
     @IBAction func saveAction(_ sender: UIButton) {
         guard let name = nameTextField.text else { return }
-        let getdateOfDeadline = deadlineDatePicker.date
+        let getdateOfDeadline = dateOfDeadline
         let requiredTimeToCompleteDuration = timeToCompletePicker.countDownDuration
         // Date -> Int
         let dateOfDeadlineTimeInterval = getdateOfDeadline.timeIntervalSince1970
@@ -55,7 +79,6 @@ class AddDeadlineViewController: UIViewController {
         }else{
             showErrorAlert()
         }
-        
 
     }
     //NEED APDATING======

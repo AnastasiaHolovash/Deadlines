@@ -114,7 +114,7 @@ class ForTodayViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func dateToString(date : Date) -> String {
         let dateDateFormater = DateFormatter()
-        dateDateFormater.dateFormat = "yyyy-MM-dd"
+        dateDateFormater.dateFormat = "MM-dd-yyyy"
         return dateDateFormater.string(from: date)
     }
     
